@@ -1,10 +1,10 @@
 import "./App.css";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Layout, } from 'antd';
 
-import Top from "./components/header"
-import Middle  from "./components/content";
-import Bottom  from "./components/foot";
+import Top from "./page/header"
+import Middle  from "./page/content";
+import Bottom  from "./page/foot";
 
 const { Header, Content, Footer, } = Layout;
 
