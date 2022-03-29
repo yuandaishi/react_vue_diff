@@ -1,5 +1,5 @@
 // 逻辑处理
-//如果使用vue处理，这方法会放在method中，属性会放在data中
+//react的数据定义和非hooks钩子函数处理一般写在另外一个js文件中，vue单文件，数据在data中，数据处放在methods中，当然也可以使用mixin混入模式
 
 export const columnsArr = [
   {
@@ -42,4 +42,3 @@ export function randomName(arr) {
     arr[(Math.random() * arr.length) | 0]
   );
 }
-

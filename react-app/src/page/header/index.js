@@ -1,18 +1,26 @@
-import {  Menu } from "antd";
+import { Menu } from "antd";
 // import { useEffect } from "react";
-import { tabArr } from "./state";
+import { Bread } from "@/store";
 
+const {tabArr,changeBread} = Bread;
 
-const Top = function () {
-    const changeTab=(e)=>{
-        console.log(e)
-    }
+const Top = (props) => {
+  // props就是父组件传过来的数据
+  console.log("header执行");
   return (
     <>
       <div className="logo" />
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]} onClick={changeTab}>
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        defaultSelectedKeys={["2"]}
+        onClick={changeBread}
+      >
         {
-            tabArr.map((item,key)=><Menu.Item key={key}>{item}</Menu.Item>)
+          // react循环输出，相当于vue的v-for，但是写法全都是基于js
+          tabArr.map((item, key) => (
+            <Menu.Item key={key}>{item}</Menu.Item>
+          ))
         }
       </Menu>
     </>

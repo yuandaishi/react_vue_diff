@@ -1,7 +1,9 @@
 import { Breadcrumb } from "antd";
-import { Bread } from "../../store";
+import { observer } from "mobx-react-lite";
+import { Bread } from "@/store";
 
-export default function BreadDom() {
+// 使用observer方法调用函数，则这个组件会被动态的监听
+const BreadDom = observer(()=> {
   return (
     <Breadcrumb style={{ margin: "16px 0" }}>
       <Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -9,4 +11,5 @@ export default function BreadDom() {
       <Breadcrumb.Item>{Bread.bread}</Breadcrumb.Item>
     </Breadcrumb>
   );
-}
+})
+export default BreadDom;

@@ -12,7 +12,7 @@ function App() {
   return (
     <Layout>
       <Header className="header">
-        <Top/>
+        <Top name="top"/>
       </Header>
       <Content style={{ padding: "0 50px" }}>
         <Middle/>
