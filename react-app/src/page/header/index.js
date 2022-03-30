@@ -1,5 +1,6 @@
 import { Menu } from "antd";
 // import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Bread } from "@/store";
 
 const {tabArr,changeBread} = Bread;
@@ -19,7 +20,7 @@ const Top = (props) => {
         {
           // react循环输出，相当于vue的v-for，但是写法全都是基于js
           tabArr.map((item, key) => (
-            <Menu.Item key={key}>{item}</Menu.Item>
+            <Menu.Item key={key}><Link to={item.path}>{item.name}</Link></Menu.Item>
           ))
         }
       </Menu>

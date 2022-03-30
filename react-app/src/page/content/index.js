@@ -1,11 +1,13 @@
 import { Layout, Table, Button, Drawer, Space } from "antd";
-import { DrawerProps } from "antd/es/drawer";
+import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Slide from "./../slider/index";
 import Bread from "./../Breadcrumb/index";
 import Slot from "./components/slot";
 import SlotOne from "./components/slotOne";
 import SlotTwo from "./components/slotTwo";
+import { useLocation } from "react-router-dom";
+import { OptionRouteArr, NavRouteArr } from "../../route/route";
 import { columnsArr, dataSource, randomName, radamTextArr } from "./state";
 
 const { Content } = Layout;
@@ -17,6 +19,7 @@ const Middle = () => {
   let [columns, setColumns] = useState(columnsArr); //useState钩子函数
   let [visible, setVisible] = useState(false);
   let [value, setValue] = useState(70);
+  const location = useLocation(); //使用这个hooks获取location对象
   const setDrawer = (con) => setVisible(con);
   return (
     <>
@@ -24,26 +27,40 @@ const Middle = () => {
       <Layout className="site-layout-background" style={{ padding: "24px 0" }}>
         <Slide />
         <Content style={{ padding: "0 24px", minHeight: 280 }}>
-          <p>这里是内容页面</p>
-          <Table dataSource={dataSource} columns={columns} />
-          <Button
-            onClick={() =>
-              setColumns((pre) =>
-                pre.concat({ title: randomName(radamTextArr), key: pre.length })
-              )
-            }
-          >
-            点击新增table表头
-          </Button>
-          <p>分隔按钮</p>
-          <Button type="primary" onClick={setDrawer.bind(this, true)}>
-            打开抽屉
-          </Button>
-          {/* 模拟vue插槽 */}
-          <Button type="primary" onClick={()=>setValue(Math.random()*100|0)} style={{marginLeft:20}}>
-            更改插槽1数值
-          </Button>
-          <Slot slotOne={<SlotOne value={value} />} slotTwo={<SlotTwo />} />
+          {/* 最开始没有组织好，将就这样展示 */}
+          <Routes>
+            {OptionRouteArr.map((item) => item)}
+            {NavRouteArr.map((item) => item)}
+          </Routes>
+          <div style={{display:location.pathname==='/'?'block':'none'}}>
+            <p>这里是内容页面</p>
+            <Table dataSource={dataSource} columns={columns} />
+            <Button
+              onClick={() =>
+                setColumns((pre) =>
+                  pre.concat({
+                    title: randomName(radamTextArr),
+                    key: pre.length,
+                  })
+                )
+              }
+            >
+              点击新增table表头
+            </Button>
+            <p>分隔按钮</p>
+            <Button type="primary" onClick={setDrawer.bind(this, true)}>
+              打开抽屉
+            </Button>
+            {/* 模拟vue插槽 */}
+            <Button
+              type="primary"
+              onClick={() => setValue((Math.random() * 100) | 0)}
+              style={{ marginLeft: 20 }}
+            >
+              更改插槽1数值
+            </Button>
+            <Slot slotOne={<SlotOne value={value} />} slotTwo={<SlotTwo />} />
+          </div>
         </Content>
       </Layout>
       <Drawer
