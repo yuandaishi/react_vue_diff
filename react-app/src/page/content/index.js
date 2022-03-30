@@ -27,11 +27,13 @@ const Middle = () => {
       <Layout className="site-layout-background" style={{ padding: "24px 0" }}>
         <Slide />
         <Content style={{ padding: "0 24px", minHeight: 280 }}>
-          {/* 最开始没有组织好，将就这样展示 */}
+          {/* react渲染路由组件的时候，没有vue简答，vue使用router-view，底层会完成很多事情 */}
           <Routes>
             {OptionRouteArr.map((item) => item)}
             {NavRouteArr.map((item) => item)}
           </Routes>
+          {/* 根路径展示的页面 */}
+          {/* react没有v-if等很多指令，vue有很多封装好的指令，提升开发效率，但是相应的要记住的东西更多 */}
           <div style={{display:location.pathname==='/'?'block':'none'}}>
             <p>这里是内容页面</p>
             <Table dataSource={dataSource} columns={columns} />

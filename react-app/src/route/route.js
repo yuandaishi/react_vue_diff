@@ -1,5 +1,6 @@
 import { Route } from "react-router-dom";
 
+import Option1 from "../page/options/option1";
 import Option2 from "../page/options/option2";
 import Option3 from "../page/options/option3";
 import Option4 from "../page/options/option4";
@@ -11,6 +12,7 @@ import Nav2 from "../page/navs/nav2";
 import Nav3 from "../page/navs/nav3";
 
 const OptionRouteArr = [
+  <Route path="/option1" element={<Option1 />} key="option1" />,
   <Route path="/option2" element={<Option2 />} key="option2" />,
   <Route path="/option3" element={<Option3 />} key="option3" />,
   <Route path="/option4" element={<Option4 />} key="option4" />,

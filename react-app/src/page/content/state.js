@@ -1,5 +1,5 @@
 // 逻辑处理
-//react的数据定义和非hooks钩子函数处理一般写在另外一个js文件中，vue单文件，数据在data中，数据处放在methods中，当然也可以使用mixin混入模式
+//react的数据定义和非hooks钩子函数（使用mobx做状态管理之后，hooks基本用不上）处理一般写在另外一个js文件中，vue单文件，数据在data中，数据处放在methods中，当然也可以使用mixin混入模式
 
 export const columnsArr = [
   {
