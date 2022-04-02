@@ -10,6 +10,8 @@ import { useLocation } from "react-router-dom";
 import { OptionRouteArr, NavRouteArr } from "../../route/route";
 import { columnsArr, dataSource, randomName, radamTextArr } from "./state";
 
+// vue使用use方法，比用频繁的import
+
 const { Content } = Layout;
 const Middle = () => {
   // hook提供了很多钩子函数，每个钩子函数会在相应的生命周期执行。react的生命周期请参考：https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
@@ -17,10 +19,8 @@ const Middle = () => {
   //组件有变化，这个函数就会重新执行，重新render并return，但是钩子函数只有在相应的生命周期才执行
   console.log("Middle执行");
   let [columns, setColumns] = useState(columnsArr); //useState钩子函数
-  let [visible, setVisible] = useState(false);
   let [value, setValue] = useState(70);
   const location = useLocation(); //使用这个hooks获取location对象
-  const setDrawer = (con) => setVisible(con);
   return (
     <>
       <Bread />
@@ -49,11 +49,6 @@ const Middle = () => {
             >
               点击新增table表头
             </Button>
-            <p>分隔按钮</p>
-            <Button type="primary" onClick={setDrawer.bind(this, true)}>
-              打开抽屉
-            </Button>
-            {/* 模拟vue插槽 */}
             <Button
               type="primary"
               onClick={() => setValue((Math.random() * 100) | 0)}
@@ -61,29 +56,11 @@ const Middle = () => {
             >
               更改插槽1数值
             </Button>
+            {/* <Slot><template :slot="slotOne"><SlotOne value={value} /></template></Slot> */}
             <Slot slotOne={<SlotOne value={value} />} slotTwo={<SlotTwo />} />
           </div>
         </Content>
       </Layout>
-      <Drawer
-        title={"抽屉"}
-        placement="right"
-        width={800}
-        onClose={setDrawer.bind(this, false)}
-        visible={visible}
-        extra={
-          <Space>
-            <Button onClick={setDrawer.bind(this, false)}>取消</Button>
-            <Button type="primary" onClick={setDrawer.bind(this, false)}>
-              确认
-            </Button>
-          </Space>
-        }
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Drawer>
     </>
   );
 };

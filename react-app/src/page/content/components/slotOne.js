@@ -3,7 +3,7 @@ import React from "react";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 import "./index.less";
 
-// 使用memo实现类函数shouldComponentUpdate的效果，vue框架内部做了处理，使用mobx的话，会更加简单
+// 使用memo实现类函数shouldComponentUpdate（类组件的一个生命周期）的效果，vue框架内部做了处理，使用mobx的话，会更加简单
 const SlotOne = (props) => {
   console.log("SlotOne执行");
   return (

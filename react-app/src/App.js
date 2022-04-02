@@ -8,6 +8,8 @@ import Bottom  from "./page/foot";
 
 const { Header, Content, Footer, } = Layout;
 
+// 每一个函数，都是一个组件，return的内容，就是组件渲染的内容
+// .vue文件由template，js，css组成
 function App() {
   return (
     <Layout>

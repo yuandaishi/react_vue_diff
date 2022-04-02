@@ -7,6 +7,7 @@ const Slot = (props) => {
       <div>
         <p>组件的其他内容</p>
         <p>插槽1：</p>
+        {/* <slot name='slotOne'>插槽1默认显示内容</slot> */}
         {props.slotOne || "插槽1默认显示内容"}
       </div>
       <div>
